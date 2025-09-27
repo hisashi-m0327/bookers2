@@ -1,3 +1,5 @@
+
+
 <div class= "container">
   <div class= "row">
     <div class= "col-md-4">
@@ -47,6 +49,7 @@
       <table class="table">
         <thead>
           <tr>
+            <th></th>
             <th>Title</th>
             <th>Opinion</th>
           </tr>
@@ -54,7 +57,14 @@
         <tbody>
           <% current_user.books.each do |book| %>
             <tr>
-              <td><%= book.title %></td>
+              <td>
+                <% if @user.image.attached? %>
+                  <%= image_tag @user.image, size: "100x100" %>
+                <% else %>
+                  <%= image_tag "no_image.jpg", size: "100x100" %>
+                <% end %>
+                </td>
+              <td><%= link_to book.title, book_path(book) %></td>
               <td><%= book.body %></td>
             </tr>
           <% end %>

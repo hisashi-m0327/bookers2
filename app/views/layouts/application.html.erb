@@ -49,9 +49,25 @@
       </nav>
     </header>
 
-    <%= yield %>
+    
+    <% if flash[:notice] %>
+      <div>
+    <%= flash[:notice] %>
+      </div>
+    <% end %>
 
-    <footer style="text-align: center; padding: 100px;">
+    <% if flash[:alert] %>
+      <div>
+    <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+      
+    
+      <%= yield %>
+    </div>
+
+    <footer style="text-align: center; padding: 40px;">
       <h6>Copyright Infratop.inc</h6>
     </footer>
   </body>
