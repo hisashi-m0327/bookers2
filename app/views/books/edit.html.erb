@@ -1,14 +1,14 @@
 <div class="d-flex justify-content-center">
   <div style="width: 400px;">
     <h1>Editing Book</h1>
-    <%= form_with model: @book, url: books_path do |f| %>             <%# 既にあるデータを使うので@bookを使う %>
+    <%= form_with model: @book do |f| %>             <%# 既にあるデータを使うので@bookを使う %>
       <div class="mb-2">
-        <h6>Title</h6>
+        <%= f.label :Title %>
         <%= f.text_field :title, class: "form-control" %>
       </div>
 
       <div class="mb-2">
-        <h6>Opinion</h6>
+        <%= f.label :Opinion %>
         <%= f.text_area :body, class: "form-control", rows: 2 %>
       </div>
 

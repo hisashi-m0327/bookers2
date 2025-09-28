@@ -66,7 +66,8 @@
               </td>
               <td>
                 <% if current_user == book.user %>
-                  <%= link_to "Destroy", book_path(book), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+                  <%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "Are you sure?",
+                   class: "btn btn-danger btn-sm" %>
                 <% end %>
               </td>
             </tr>
