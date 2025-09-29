@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+   before_action :is_matching_login_user, only: [:edit, :update]
 
   def index
     @books = Book.all
@@ -19,7 +20,7 @@ class BooksController < ApplicationController
       flash[:notice] = "You have created book successfully."
       redirect_to @book
     else
-      @books =current_user.books
+      @books =Book.all
       render :index
     end
   end

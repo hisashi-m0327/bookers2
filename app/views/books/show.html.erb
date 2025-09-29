@@ -60,13 +60,13 @@
               <td><%= link_to book.title, book_path(book) %></td>
               <td><%= book.body %></td>
               <td>
-                <% if current_user == book.user %>
-                  <%= link_to "Edit", edit_book_path(book), class: "btn btn-success" %>
+                <% if @book.user == current_user %>
+                  <%= link_to "Edit", edit_book_path(@book), class: "btn btn-success" %>
                 <% end %>
               </td>
               <td>
-                <% if current_user == book.user %>
-                  <%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "Are you sure?",
+                <% if @book.user == current_user %>
+                  <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "Are you sure?",
                    class: "btn btn-danger btn-sm" %>
                 <% end %>
               </td>
