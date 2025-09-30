@@ -2,16 +2,21 @@
 
 
   <div style="text-align: left;">
-    <h2>Welcome to <strong>Bookers</strong> !!</h2>
-    <p>In <strong>Bookers</strong>,</p>
+    <h1>Welcome to <strong><i class="fa-solid fa-book"></i>Bookers</strong> !!</h1>
+    <p>In <strong><i class="fa-solid fa-book"></i>Bookers</strong>,</p>
     <p>you can share and exchange your opinions, impressions, and emotions</p>
     <p>about various books!</p>
   </div>
 
 
   <div class="text-center mt-2">
-    <p><a class="btn btn-info me-2" style="width: 500px;" href="/users/sign_in">Log in</a></p>
-    <p><a class="btn btn-success" style="width: 500px;" href="/users/sign_up">Sign Up</a></p>
-  </div>
+  <p>
+    <%= link_to 'Log in', new_user_session_path, class: 'btn btn-info me-2', style: 'width: 500px;' %>
+  </p>
+  <p>
+    <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-success', style: 'width: 500px;' %>
+  </p>
+</div>
+
 
 </div>

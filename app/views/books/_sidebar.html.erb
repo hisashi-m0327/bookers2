@@ -1,17 +1,18 @@
 <div class= "col-md-3">
-      <% if @book.errors.any? %>
-          <%= @book.errors.count %> errors prohibited this obj from being saved:
-          <ul>
-            <% @book.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-      <% end %>
-
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %> errors prohibited this obj from being saved:
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+      
+    <div class="mt-4">
       <h3>User info</h3>
   
-      <% if current_user.image.attached? %>
-        <%= image_tag current_user.image, size: "100x100" %>
+      <% if @user.profile_image.attached? %>
+        <%= image_tag @user.profile_image.variant(resize: "100x100") %>
       <% else %>
         <%= image_tag "no_image.jpg", size: "100x100" %>
       <% end %>
@@ -19,19 +20,30 @@
       <table class="table">
           <tr>
             <th>Name</th>
-            <td><%= current_user.name %></td>
+            <td><%= @user.name %></td>
           </tr>
           <tr>
             <th>Introduction</th>
-            <td><%= current_user.introduction %></td>
+            <td><%= @user.introduction %></td>
           </tr>
       </table>
+      
+      <% if @user == current_user %>
+        <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary p-2 custom-btn" do %>
+          <i class="fa-solid fa-user-gear text-secondary"></i>  
+        <% end %>
+      <% else %>
+        <%= link_to user_path(current_user), class: "btn btn-outline-secondary p-2 custom-btn" do %>
+          <i class="fa-solid fa-user-gear text-secondary"></i> 
+          <span class="sr-only">Edit</span>
+        <% end %>
+      <% end %>
 
-      <%= link_to "ユーザー設定", edit_user_path(current_user) %>
+      
 
       <h3>New book</h3>
 
-      <%= form_with model: @book, url: books_path do |f| %>
+      <%= form_with model: book, url: books_path do |f| %>
         <div class="mb-2">
           <h6>Title</h6>
           <%= f.text_field :title, class: "form-control" %>
@@ -47,3 +59,4 @@
         </div>
       <% end %>
     </div>
+</div>

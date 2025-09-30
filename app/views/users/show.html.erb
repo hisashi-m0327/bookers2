@@ -1,10 +1,10 @@
 
 
-<div class= "container">
-  <div class= "row">
-    <%= render 'books/sidebar' %>
+  <div class= "container">
+    <div class= "row">
+      <%= render 'books/sidebar', book: @book %>
     
-    <div class= "col-md-8 offset-md-1">
+    <div class= "col-md-8 offset-md-1 mt-4">
       <h3>Books</h3>
       <table class="table">
         <thead>
@@ -15,11 +15,11 @@
           </tr>
         </thead>
         <tbody>
-          <% current_user.books.each do |book| %>
+          <% @user.books.each do |book| %>
             <tr>
               <td>
-                <% if @user.image.attached? %>
-                  <%= image_tag @user.image, size: "100x100" %>
+                <% if book.user.profile_image.attached? %>
+                  <%= image_tag book.user.profile_image.variant(resize: "100x100") %>
                 <% else %>
                   <%= image_tag "no_image.jpg", size: "100x100" %>
                 <% end %>
@@ -31,7 +31,8 @@
         </tbody>
       </table>
     </div>
+    </div>
   </div>
-</div>
+
 
   
