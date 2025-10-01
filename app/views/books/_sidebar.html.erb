@@ -1,8 +1,8 @@
 <div class= "col-md-3">
-  <% if @book.errors.any? %>
-    <%= @book.errors.count %> errors prohibited this obj from being saved:
+  <% if book.errors.any? %>
+    <%= book.errors.count %> errors prohibited this obj from being saved:
       <ul>
-        <% @book.errors.full_messages.each do |message| %>
+        <% book.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -11,8 +11,8 @@
     <div class="mt-4">
       <h3>User info</h3>
   
-      <% if @user.profile_image.attached? %>
-        <%= image_tag @user.profile_image.variant(resize: "100x100") %>
+      <% if user.profile_image.attached? %>
+        <%= image_tag user.profile_image.variant(resize: "100x100") %>
       <% else %>
         <%= image_tag "no_image.jpg", size: "100x100" %>
       <% end %>
@@ -20,24 +20,19 @@
       <table class="table">
           <tr>
             <th>Name</th>
-            <td><%= @user.name %></td>
+            <td><strong><%= user.name %></strong></td>
           </tr>
           <tr>
             <th>Introduction</th>
-            <td><%= @user.introduction %></td>
+            <td><strong><%= user.introduction %></strong></td>
           </tr>
       </table>
       
-      <% if @user == current_user %>
-        <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary p-2 custom-btn" do %>
+      
+        <%= link_to edit_user_path(user), class: "btn btn-outline-secondary p-2 custom-btn" do %>
           <i class="fa-solid fa-user-gear text-secondary"></i>  
         <% end %>
-      <% else %>
-        <%= link_to user_path(current_user), class: "btn btn-outline-secondary p-2 custom-btn" do %>
-          <i class="fa-solid fa-user-gear text-secondary"></i> 
-          <span class="sr-only">Edit</span>
-        <% end %>
-      <% end %>
+      
 
       
 
