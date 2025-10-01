@@ -4,7 +4,7 @@
 
     <div class= "col-md-8 offset-md-1 mt-4">
       <h3>Users</h3>
-      <table class="table">
+      <table class="table table-sm">
   <thead>
     <tr>
       <th>Image</th>
@@ -15,7 +15,7 @@
     <% @users.each do |user| %>
       <tr>
         <td>
-          <% if @user.profile_image.attached? %>
+          <% if user.profile_image.attached? %>
             <%= image_tag @user.profile_image.variant(resize: "100x100") %>
           <% else %>
             <%= image_tag "no_image.jpg", size: "100x100" %>

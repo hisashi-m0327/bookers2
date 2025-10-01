@@ -6,30 +6,31 @@
     
     <div class= "col-md-8 offset-md-1 mt-4">
       <h3>Books</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Opinion</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @user.books.each do |book| %>
-            <tr>
-              <td>
-                <% if book.user.profile_image.attached? %>
-                  <%= image_tag book.user.profile_image.variant(resize: "100x100") %>
-                <% else %>
-                  <%= image_tag "no_image.jpg", size: "100x100" %>
-                <% end %>
-                </td>
-              <td><%= link_to book.title, book_path(book) %></td>
-              <td><%= book.body %></td>
-            </tr>
+      <table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.books.each do |book| %>
+      <tr class="book-row" onclick="location.href='<%= book_path(book) %>'" style="cursor: pointer;">
+        <td>
+          <% if book.user.profile_image.attached? %>
+            <%= image_tag book.user.profile_image.variant(resize: "100x100") %>
+          <% else %>
+            <%= image_tag "no_image.jpg", size: "100x100" %>
           <% end %>
-        </tbody>
-      </table>
+        </td>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
     </div>
     </div>
   </div>
